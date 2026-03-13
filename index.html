@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyanjali 💫</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+background-size:400% 400%;
+animation:bgMove 12s infinite alternate;
+overflow:hidden;
+color:white;
+text-align:center;
+}
+
+@keyframes bgMove{
+0%{background-position:left;}
+100%{background-position:right;}
+}
+
+.container{
+z-index:2;
+}
+
+h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+p{
+font-size:18px;
+line-height:1.6;
+}
+
+button{
+padding:14px 28px;
+border:none;
+border-radius:30px;
+font-size:18px;
+margin:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.yes{
+background:#4CAF50;
+color:white;
+}
+
+.no{
+background:#ff5252;
+color:white;
+position:absolute;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#celebrate{
+display:none;
+font-size:30px;
+margin-top:20px;
+}
+
+/* floating hearts */
+
+.heart{
+position:absolute;
+font-size:22px;
+color:#ff4d6d;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+/* sparkles */
+
+.sparkle{
+position:absolute;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:0.3}
+50%{opacity:1}
+}
+
+/* why box */
+
+#whyBox{
+display:none;
+margin-top:20px;
+}
+
+textarea{
+width:260px;
+height:80px;
+border-radius:10px;
+padding:10px;
+border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Hi Priyanjali 😊</h1>
+
+<p>
+Life feels more fun when you have an amazing friend.<br>
+You are creative, kind, and really interesting to talk to.<br><br>
+
+So I wanted to ask something special...
+</p>
+
+<h2>Will you be my best friend? 🤝</h2>
+
+<button class="yes" onclick="accept()">YES 💫</button>
+<button class="no" onclick="handleNo()" onmouseover="moveButton()">NO 😅</button>
+
+<div id="celebrate">
+Yay!! Best Friends Forever 🎉
+</div>
+
+<div id="whyBox">
+
+<h3>Oh no 😢</h3>
+<p>Can I ask why?</p>
+
+<textarea id="reason" placeholder="Write your reason here..."></textarea>
+
+<br><br>
+
+<button onclick="sendReason()">Submit</button>
+
+<p id="response"></p>
+
+</div>
+
+</div>
+
+<script>
+
+/* floating hearts background */
+
+setInterval(()=>{
+
+let heart=document.createElement("div")
+heart.className="heart"
+heart.innerHTML="❤"
+
+heart.style.left=Math.random()*100+"%"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{heart.remove()},6000)
+
+},500)
+
+/* sparkles */
+
+for(let i=0;i<60;i++){
+
+let s=document.createElement("div")
+s.className="sparkle"
+
+s.style.top=Math.random()*100+"%"
+s.style.left=Math.random()*100+"%"
+
+document.body.appendChild(s)
+
+}
+
+/* yes */
+
+function accept(){
+
+document.getElementById("celebrate").style.display="block"
+
+}
+
+/* moving no button */
+
+function moveButton(){
+
+let btn=document.querySelector(".no")
+
+btn.style.top=Math.random()*80+"%"
+btn.style.left=Math.random()*80+"%"
+
+}
+
+let noClicks=0
+
+function handleNo(){
+
+noClicks++
+
+if(noClicks>=3){
+
+document.getElementById("whyBox").style.display="block"
+
+}
+
+}
+
+/* submit reason */
+
+function sendReason(){
+
+let text=document.getElementById("reason").value
+
+if(text.trim()===""){
+alert("Please tell the reason 🙂")
+return
+}
+
+document.getElementById("response").innerHTML=
+"Thank you for being honest. You are still an amazing person ✨"
+
+}
+
+</script>
+
+</body>
+  </html>
